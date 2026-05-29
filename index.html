@@ -919,26 +919,26 @@ const app = createApp({
       {id:'snack',name:'小食甜点',icon:'🍰'},
     ]
     const menuData = [
-      {id:1,name:'杨枝甘露',category:'hot',price:22,originalPrice:28,desc:'芒果+西柚+椰奶+西米，经典港式甜品',img:'https://picsum.photos/seed/yangzhi/400',sales:3286,tags:['招牌','必喝'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
-      {id:2,name:'珍珠奶茶',category:'hot',price:15,desc:'手作黑糖珍珠+醇香奶茶',img:'https://picsum.photos/seed/zhenzhu/400',sales:5102,tags:['经典','TOP1'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
-      {id:3,name:'芋泥波波奶茶',category:'hot',price:20,desc:'手工芋泥+Q弹波波+鲜奶',img:'https://picsum.photos/seed/yuni/400',sales:2891,tags:['人气'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
-      {id:4,name:'红豆奶茶',category:'milk-tea',price:14,desc:'蜜红豆+阿萨姆红茶+鲜奶',img:'https://picsum.photos/seed/hongdou/400',sales:1823,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
-      {id:5,name:'抹茶拿铁',category:'milk-tea',price:18,desc:'宇治抹茶+鲜牛乳',img:'https://picsum.photos/seed/matcha/400',sales:1567,tags:['推荐'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
-      {id:6,name:'焦糖奶茶',category:'milk-tea',price:16,desc:'手炒焦糖+锡兰红茶+鲜奶',img:'https://picsum.photos/seed/caramel/400',sales:1245,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
-      {id:7,name:'黑糖脏脏茶',category:'milk-tea',price:18,desc:'手作黑糖挂壁+鲜奶+珍珠',img:'https://picsum.photos/seed/brown-sugar/400',sales:2034,tags:['网红'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['标准甜','少甜'],toppings:['珍珠','椰果','芋圆']},
-      {id:8,name:'满杯红柚',category:'fruit-tea',price:18,desc:'一整颗西柚+茉莉绿茶',img:'https://picsum.photos/seed/grapefruit/400',sales:1678,tags:['清爽'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','芦荟','多肉']},
-      {id:9,name:'百香果双响炮',category:'fruit-tea',price:16,desc:'百香果+椰果+珍珠',img:'https://picsum.photos/seed/passion/400',sales:2156,tags:['酸甜'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','芦荟','多肉']},
-      {id:10,name:'柠檬绿茶',category:'fruit-tea',price:12,desc:'鲜切柠檬+茉莉绿茶',img:'https://picsum.photos/seed/lemon/400',sales:3012,tags:['解渴','性价比'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','芦荟']},
-      {id:11,name:'草莓果茶',category:'fruit-tea',price:22,desc:'新鲜草莓+茉莉绿茶+椰果',img:'https://picsum.photos/seed/strawberry/400',sales:1890,tags:['季节'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖'],toppings:['椰果','芦荟','多肉']},
-      {id:12,name:'芝士茉莉',category:'cheese',price:18,desc:'手打芝士奶盖+清香茉莉',img:'https://picsum.photos/seed/cheese-tea/400',sales:1456,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆']},
-      {id:13,name:'芝士莓莓',category:'cheese',price:24,desc:'芝士奶盖+草莓冰沙',img:'https://picsum.photos/seed/cheese-berry/400',sales:1234,tags:['限定'],sizes:['大杯'],iceOptions:['正常冰','少冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['珍珠','椰果']},
-      {id:14,name:'芝士桃桃',category:'cheese',price:22,desc:'芝士奶盖+水蜜桃冰沙',img:'https://picsum.photos/seed/cheese-peach/400',sales:1567,tags:['新品'],sizes:['大杯'],iceOptions:['正常冰','少冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['珍珠','椰果','多肉']},
-      {id:15,name:'蓝莓酸奶',category:'yogurt',price:20,desc:'鲜酿酸奶+蓝莓果酱',img:'https://picsum.photos/seed/blueberry/400',sales:987,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['椰果','芦荟','燕麦']},
-      {id:16,name:'芒果酸奶',category:'yogurt',price:20,desc:'鲜酿酸奶+芒果果肉',img:'https://picsum.photos/seed/mango-y/400',sales:1123,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['椰果','芦荟','燕麦']},
-      {id:17,name:'春日樱花拿铁',category:'seasonal',price:24,desc:'樱花糖浆+浓缩咖啡+鲜奶',img:'https://picsum.photos/seed/sakura/400',sales:678,tags:['限定','季节'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['珍珠','椰果']},
-      {id:18,name:'蜜桃乌龙',category:'seasonal',price:18,desc:'水蜜桃+高山乌龙',img:'https://picsum.photos/seed/peach-oolong/400',sales:1345,tags:['清爽'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','多肉','芦荟']},
-      {id:19,name:'鸡蛋仔',category:'snack',price:12,desc:'港式鸡蛋仔，外脆内软',img:'https://picsum.photos/seed/egg-waffle/400',sales:890,sizes:['标准'],iceOptions:[],sugarOptions:[],toppings:[]},
-      {id:20,name:'提拉米苏',category:'snack',price:16,desc:'意式提拉米苏蛋糕',img:'https://picsum.photos/seed/tiramisu/400',sales:567,sizes:['标准'],iceOptions:[],sugarOptions:[],toppings:[]},
+      {id:1,name:'杨枝甘露',category:'hot',price:22,originalPrice:28,desc:'芒果+西柚+椰奶+西米，经典港式甜品',img:'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=400&fit=crop',sales:3286,tags:['招牌','必喝'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
+      {id:2,name:'珍珠奶茶',category:'hot',price:15,desc:'手作黑糖珍珠+醇香奶茶',img:'https://images.unsplash.com/photo-1525803377221-3e21efce1375?w=400&h=400&fit=crop',sales:5102,tags:['经典','TOP1'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
+      {id:3,name:'芋泥波波奶茶',category:'hot',price:20,desc:'手工芋泥+Q弹波波+鲜奶',img:'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=400&fit=crop',sales:2891,tags:['人气'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
+      {id:4,name:'红豆奶茶',category:'milk-tea',price:14,desc:'蜜红豆+阿萨姆红茶+鲜奶',img:'https://images.unsplash.com/photo-1536861543047-e8b7fbf8eb8f?w=400&h=400&fit=crop',sales:1823,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
+      {id:5,name:'抹茶拿铁',category:'milk-tea',price:18,desc:'宇治抹茶+鲜牛乳',img:'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400&h=400&fit=crop',sales:1567,tags:['推荐'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
+      {id:6,name:'焦糖奶茶',category:'milk-tea',price:16,desc:'手炒焦糖+锡兰红茶+鲜奶',img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop',sales:1245,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆','芝士','布丁']},
+      {id:7,name:'黑糖脏脏茶',category:'milk-tea',price:18,desc:'手作黑糖挂壁+鲜奶+珍珠',img:'https://images.unsplash.com/photo-1574918251585-1e4a56e2e0e1?w=400&h=400&fit=crop',sales:2034,tags:['网红'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['标准甜','少甜'],toppings:['珍珠','椰果','芋圆']},
+      {id:8,name:'满杯红柚',category:'fruit-tea',price:18,desc:'一整颗西柚+茉莉绿茶',img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=400&fit=crop',sales:1678,tags:['清爽'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','芦荟','多肉']},
+      {id:9,name:'百香果双响炮',category:'fruit-tea',price:16,desc:'百香果+椰果+珍珠',img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=400&fit=crop',sales:2156,tags:['酸甜'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','芦荟','多肉']},
+      {id:10,name:'柠檬绿茶',category:'fruit-tea',price:12,desc:'鲜切柠檬+茉莉绿茶',img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&h=400&fit=crop',sales:3012,tags:['解渴','性价比'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','芦荟']},
+      {id:11,name:'草莓果茶',category:'fruit-tea',price:22,desc:'新鲜草莓+茉莉绿茶+椰果',img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop',sales:1890,tags:['季节'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖'],toppings:['椰果','芦荟','多肉']},
+      {id:12,name:'芝士茉莉',category:'cheese',price:18,desc:'手打芝士奶盖+清香茉莉',img:'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400&h=400&fit=crop',sales:1456,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['珍珠','椰果','芋圆']},
+      {id:13,name:'芝士莓莓',category:'cheese',price:24,desc:'芝士奶盖+草莓冰沙',img:'https://images.unsplash.com/photo-1546173159-315724a31696?w=400&h=400&fit=crop',sales:1234,tags:['限定'],sizes:['大杯'],iceOptions:['正常冰','少冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['珍珠','椰果']},
+      {id:14,name:'芝士桃桃',category:'cheese',price:22,desc:'芝士奶盖+水蜜桃冰沙',img:'https://images.unsplash.com/photo-1560508530-cad0bc297037?w=400&h=400&fit=crop',sales:1567,tags:['新品'],sizes:['大杯'],iceOptions:['正常冰','少冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['珍珠','椰果','多肉']},
+      {id:15,name:'蓝莓酸奶',category:'yogurt',price:20,desc:'鲜酿酸奶+蓝莓果酱',img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=400&fit=crop',sales:987,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['椰果','芦荟','燕麦']},
+      {id:16,name:'芒果酸奶',category:'yogurt',price:20,desc:'鲜酿酸奶+芒果果肉',img:'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&h=400&fit=crop',sales:1123,sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['椰果','芦荟','燕麦']},
+      {id:17,name:'春日樱花拿铁',category:'seasonal',price:24,desc:'樱花糖浆+浓缩咖啡+鲜奶',img:'https://images.unsplash.com/photo-1497534446932-c925b458314e?w=400&h=400&fit=crop',sales:678,tags:['限定','季节'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖'],toppings:['珍珠','椰果']},
+      {id:18,name:'蜜桃乌龙',category:'seasonal',price:18,desc:'水蜜桃+高山乌龙',img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=400&fit=crop',sales:1345,tags:['清爽'],sizes:['中杯','大杯'],iceOptions:['正常冰','少冰','去冰','温热'],sugarOptions:['全糖','七分糖','五分糖','三分糖','无糖'],toppings:['椰果','多肉','芦荟']},
+      {id:19,name:'鸡蛋仔',category:'snack',price:12,desc:'港式鸡蛋仔，外脆内软',img:'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=400&fit=crop',sales:890,sizes:['标准'],iceOptions:[],sugarOptions:[],toppings:[]},
+      {id:20,name:'提拉米苏',category:'snack',price:16,desc:'意式提拉米苏蛋糕',img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop',sales:567,sizes:['标准'],iceOptions:[],sugarOptions:[],toppings:[]},
     ]
     const promos = [
       {id:1,title:'新店开业',subtitle:'全场饮品第二杯半价',icon:'🎊',bg:'linear-gradient(135deg,#FF6B6B,#FF8E8E)'},
@@ -947,8 +947,8 @@ const app = createApp({
       {id:4,title:'新品尝鲜',subtitle:'春日系列立减3元',icon:'🌸',bg:'linear-gradient(135deg,#A8E6CF,#88D8B0)'},
     ]
     const flashSales = [
-      {id:1,name:'珍珠奶茶',originalPrice:15,price:9.9,img:'https://picsum.photos/seed/zhenzhu/200',remaining:58},
-      {id:2,name:'柠檬绿茶',originalPrice:12,price:6.9,img:'https://picsum.photos/seed/lemon/200',remaining:123},
+      {id:1,name:'珍珠奶茶',originalPrice:15,price:9.9,img:'https://images.unsplash.com/photo-1525803377221-3e21efce1375?w=200&h=200&fit=crop',remaining:58},
+      {id:2,name:'柠檬绿茶',originalPrice:12,price:6.9,img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=200&h=200&fit=crop',remaining:123},
     ]
 
     // State
@@ -985,8 +985,8 @@ const app = createApp({
       {id:3,name:'8折优惠券',type:'percent',value:0.8,minSpend:0,expire:'2026-07-01',used:false},
     ])
     const orders = ref([
-      {id:'MT20260529001',status:'delivering',statusText:'配送中',mode:'delivery',items:[{name:'杨枝甘露',spec:'大杯/少冰/三分糖',qty:1,price:22,img:'https://picsum.photos/seed/yangzhi/200'},{name:'珍珠奶茶',spec:'中杯/正常冰/五分糖',qty:2,price:15,img:'https://picsum.photos/seed/zhenzhu/200'}],total:52,discount:0,payAmount:52,time:'2026-05-29 14:30',address:'中关村SOHO大厦A座1201',rider:{name:'李师傅',phone:'139****9999',status:'已取餐，预计15分钟送达'}},
-      {id:'MT20260528002',status:'completed',statusText:'已完成',mode:'pickup',items:[{name:'芋泥波波奶茶',spec:'大杯/温热/五分糖',qty:1,price:20,img:'https://picsum.photos/seed/yuni/200'}],total:20,discount:2,payAmount:18,time:'2026-05-28 16:20',pickupCode:'A28'},
+      {id:'MT20260529001',status:'delivering',statusText:'配送中',mode:'delivery',items:[{name:'杨枝甘露',spec:'大杯/少冰/三分糖',qty:1,price:22,img:'https://images.unsplash.com/photo-1558857563-b371033873b8?w=200&h=200&fit=crop'},{name:'珍珠奶茶',spec:'中杯/正常冰/五分糖',qty:2,price:15,img:'https://images.unsplash.com/photo-1525803377221-3e21efce1375?w=200&h=200&fit=crop'}],total:52,discount:0,payAmount:52,time:'2026-05-29 14:30',address:'中关村SOHO大厦A座1201',rider:{name:'李师傅',phone:'139****9999',status:'已取餐，预计15分钟送达'}},
+      {id:'MT20260528002',status:'completed',statusText:'已完成',mode:'pickup',items:[{name:'芋泥波波奶茶',spec:'大杯/温热/五分糖',qty:1,price:20,img:'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=200&h=200&fit=crop'}],total:20,discount:2,payAmount:18,time:'2026-05-28 16:20',pickupCode:'A28'},
     ])
     const addresses = ref([
       {name:'张先生',phone:'138****8888',address:'中关村SOHO大厦A座1201',tag:'公司'},
