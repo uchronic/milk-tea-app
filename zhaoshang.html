@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>无人驾驶头部企业招商图谱</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#030d1e;color:#c8e0ff;font-family:'微软雅黑','Microsoft YaHei',sans-serif;overflow:hidden;width:100vw;height:100vh}
+#chart{width:100vw;height:100vh}
+#header{position:absolute;top:0;left:0;right:0;padding:22px 40px;z-index:10;background:linear-gradient(to bottom,rgba(3,13,30,.95),transparent)}
+.t1{font-size:26px;font-weight:bold;color:#fff;letter-spacing:4px;text-shadow:0 0 20px rgba(0,200,255,.5)}
+.t2{font-size:12px;color:#3d6b9a;margin-top:5px;letter-spacing:2px}
+#stats{position:absolute;top:22px;right:40px;z-index:10;display:flex;flex-direction:row;gap:10px}
+.sc{background:rgba(3,20,50,.85);border:1px solid rgba(0,150,255,.2);border-left:3px solid;border-radius:4px;padding:6px 14px;min-width:100px}
+.sn{font-size:20px;font-weight:bold}
+.sl{font-size:11px;color:#3d6b9a;margin-top:2px}
+#legend{position:absolute;bottom:30px;left:30px;z-index:10;background:rgba(3,20,50,.85);border:1px solid rgba(0,150,255,.2);border-radius:8px;padding:14px 18px}
+.lt{font-size:11px;color:#3d6b9a;margin-bottom:10px;letter-spacing:1px}
+.li{display:flex;align-items:center;margin-bottom:7px;font-size:12px;color:#c8e0ff}
+.ld{width:10px;height:10px;border-radius:50%;margin-right:8px;flex-shrink:0}
+.lr{width:14px;height:14px;border-radius:50%;margin-right:8px;flex-shrink:0;border:2px solid}
+#loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#3d6b9a;font-size:14px;z-index:20}
+#clines{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:6}
+.cbox{position:absolute;pointer-events:none;background:rgba(3,18,45,.93);border:1px solid rgba(77,200,255,.3);border-radius:6px;padding:10px 13px;min-width:148px;max-width:190px;z-index:7}
+.cbox-city{font-size:12px;font-weight:bold;color:#4dc8ff;margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid rgba(0,150,255,.25);letter-spacing:1px}
+.cbox-cat{font-size:10px;color:#3d6b9a;margin:5px 0 2px;letter-spacing:.5px;text-transform:uppercase}
+.cbox-co{font-size:11px;color:#c8e0ff;line-height:1.8}
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="t1">无人驾驶头部企业招商图谱</div>
+  <div class="t2">AUTONOMOUS DRIVING INDUSTRY INVESTMENT ATLAS · 2025</div>
+</div>
+<div id="stats">
+  <div class="sc" style="border-left-color:#f0b030"><div class="sn" style="color:#f0b030">3</div><div class="sl">核心产业高地</div></div>
+  <div class="sc" style="border-left-color:#4dc8ff"><div class="sn" style="color:#4dc8ff">20</div><div class="sl">重点试点城市</div></div>
+  <div class="sc" style="border-left-color:#00e5a0"><div class="sn" style="color:#00e5a0">14</div><div class="sl">目标招引企业</div></div>
+</div>
+<div id="legend">
+  <div class="lt">图 例 LEGEND</div>
+  <div class="li"><div class="lr" style="border-color:#f0b030;box-shadow:0 0 6px #f0b030"></div>三大产业高地</div>
+  <div class="li"><div class="ld" style="background:rgba(77,200,255,.25);border:1px solid #4dc8ff"></div>20个试点城市</div>
+  <div class="li"><div class="ld" style="background:#ff7043;box-shadow:0 0 4px rgba(255,112,67,.7)"></div>硬件制造商（执行/感知）</div>
+  <div class="li"><div class="ld" style="background:#ab47bc;box-shadow:0 0 4px rgba(171,71,188,.7)"></div>数据服务商（标注/运营）</div>
+  <div class="li"><div class="ld" style="background:#00e5a0;box-shadow:0 0 4px rgba(0,229,160,.7)"></div>场景运营商（环卫/配送）</div>
+</div>
+<div id="loading">地图加载中...</div>
+<div id="chart"></div>
+<script>
+const HUBS = [
+  {name:'北京·津冀高地', value:[116.4,39.9], desc:'北方智能驾驶政策引领高地\n头部L4企业集聚，数据服务链完善'},
+  {name:'上海·长三角高地', value:[121.47,31.23], desc:'自动驾驶创新中心\n整车+零部件+数据完整生态链'},
+  {name:'深圳·大湾区高地', value:[114.06,22.54], desc:'华南智能网联产业集群\n硬件供应链+资本市场双驱动'},
+];
+const PILOTS = [
+  {name:'广州',value:[113.27,23.13]},{name:'重庆',value:[106.55,29.56]},
+  {name:'武汉',value:[114.31,30.52]},{name:'长沙',value:[112.98,28.21]},
+  {name:'成都',value:[104.07,30.67]},{name:'杭州',value:[120.15,30.28]},
+  {name:'苏州',value:[120.62,31.32]},{name:'无锡',value:[120.3,31.57]},
+  {name:'合肥',value:[117.27,31.86]},{name:'郑州',value:[113.65,34.76]},
+  {name:'济南',value:[117.12,36.65]},{name:'西安',value:[108.95,34.27]},
+  {name:'沈阳',value:[123.43,41.8]},{name:'哈尔滨',value:[126.53,45.8]},
+  {name:'南京',value:[118.78,32.04]},{name:'天津',value:[117.2,39.12]},
+  {name:'福州',value:[119.3,26.08]},{name:'宁波',value:[121.55,29.87]},
+  {name:'保定',value:[115.49,38.87]},{name:'湖州',value:[120.09,30.86]},
+];
+const HARDWARE = [
+  {name:'伯特利', value:[121.55,29.87], detail:'执行硬件·线控制动|线控制动龙头，深度配套华东主机厂，有产能扩张需求'},
+  {name:'亚太股份', value:[120.09,30.86], detail:'执行硬件·线控转向|线控转向新锐，已有量产项目，正寻求新基地'},
+  {name:'拿森科技', value:[121.44,31.18], detail:'执行硬件·线控转向|国产线控转向头部，需土地+厂房+产业基金组合招引'},
+  {name:'速腾聚创', value:[114.06,22.52], detail:'感知硬件·激光雷达|商用车激光雷达龙头，重卡、物流车场景深耕'},
+  {name:'图达通', value:[120.62,31.32], detail:'感知硬件·激光雷达|激光雷达总装，需组装标定及售后服务中心'},
+  {name:'一径科技', value:[121.50,31.26], detail:'感知硬件·激光雷达|激光雷达总装，可提供宿迁测试应用场景'},
+];
+const DATA_SVC = [
+  {name:'数据堂', value:[116.37,39.93], detail:'平台服务·数据标注|对接萝卜快跑、小马智行等L4，提供标注与远程监控外包'},
+  {name:'海天瑞声', value:[116.44,39.86], detail:'平台服务·数据标注|无人驾驶场景数据采集标注，为多家L4头部外包商'},
+];
+const SCENE = [
+  {name:'仙途智能', value:[121.47,31.33], detail:'无人环卫·场景运营|正向城市级运营服务转型，寻求区域运营总部落地'},
+  {name:'酷哇科技', value:[121.53,31.20], detail:'无人环卫·场景运营|以整体环卫服务合同为筹码，需城市合作伙伴'},
+  {name:'于万智驾', value:[104.07,30.67], detail:'无人环卫·场景运营|无人环卫场景运营商，西南区域扩张中'},
+  {name:'新石器', value:[116.41,39.98], detail:'无人配送·场景运营|已进入万台部署阶段，急需标准化无人车生产基地'},
+  {name:'白犀牛', value:[116.35,39.85], detail:'无人配送·场景运营|产能扩张期，需绿色电配套及储能基础设施支持'},
+  {name:'毫末智行', value:[115.49,38.87], detail:'无人配送·场景运营|万台规模部署，产能与运营网络双向扩张'},
+];
+// 引线标注：pct=标注框在对应边上的位置比例(0-1), color=分类色
+var CALLOUTS = [
+  {city:'北京', coords:[116.4,39.9], side:'top', pct:0.42,
+   categories:[
+    {name:'数据服务商', color:'#ab47bc', companies:['数据堂','海天瑞声']},
+    {name:'场景运营商', color:'#00e5a0', companies:['新石器']},
+  ]},
+  {city:'保定', coords:[115.49,38.87], side:'right', pct:0.03,
+   categories:[
+    {name:'场景运营商', color:'#00e5a0', companies:['毫末智行']},
+  ]},
+  {city:'湖州', coords:[120.09,30.86], side:'right', pct:0.17,
+   categories:[
+    {name:'硬件制造商', color:'#ff7043', companies:['亚太股份']},
+  ]},
+  {city:'江苏·苏州', coords:[119.8,31.8], side:'right', pct:0.33,
+   categories:[
+    {name:'雷达系统',   color:'#4dc8ff', companies:['雷防科务智能系统','润和软件','诚迈科技']},
+    {name:'执行端',     color:'#ff9b7a', companies:['星宇股份','奥联电子']},
+    {name:'解决方案',   color:'#4dc8ff', companies:['知行汽车科技']},
+    {name:'感知硬件',   color:'#ff7043', companies:['图达通(苏州)']},
+  ]},
+  {city:'上海', coords:[121.47,31.23], side:'right', pct:0.61,
+   categories:[
+    {name:'硬件制造商', color:'#ff7043', companies:['拿森科技','一径科技']},
+    {name:'场景运营商', color:'#00e5a0', companies:['仙途智能','酷哇科技','白犀牛']},
+  ]},
+  {city:'宁波', coords:[121.55,29.87], side:'bottom', pct:0.82,
+   categories:[
+    {name:'硬件制造商', color:'#ff7043', companies:['伯特利']},
+  ]},
+  {city:'深圳', coords:[114.06,22.52], side:'bottom', pct:0.63,
+   categories:[
+    {name:'硬件制造商', color:'#ff7043', companies:['速腾聚创']},
+  ]},
+  {city:'成都', coords:[104.07,30.67], side:'left', pct:0.55,
+   categories:[
+    {name:'场景运营商', color:'#00e5a0', companies:['于万智驾']},
+  ]},
+];
+</script>
+<script>
+function tip(p) {
+  if (!p.data) return p.name;
+  if (p.data.desc) {
+    return '<div style="font-weight:bold;color:#f0b030;margin-bottom:5px">'+p.name+'</div>'
+      +'<div style="color:#c8e0ff;line-height:1.6">'+p.data.desc.replace('\n','<br>')+'</div>';
+  }
+  if (p.data.detail) {
+    var parts=p.data.detail.split('|');
+    var cat=parts[0], info=parts[1]||'';
+    var color=p.seriesName==='硬件制造商'?'#ff9b7a':p.seriesName==='数据服务商'?'#ce93d8':'#69f7c5';
+    return '<div style="font-weight:bold;color:'+color+';margin-bottom:4px">'+p.name+'</div>'
+      +'<div style="color:#5b8db8;font-size:11px;margin-bottom:4px">'+cat+'</div>'
+      +'<div style="color:#c8e0ff;line-height:1.6;max-width:200px">'+info+'</div>';
+  }
+  return p.name;
+}
+
+function initCallouts(chart) {
+  // position:fixed wrapper 不受 body overflow:hidden 影响
+  var wrap=document.createElement('div');
+  wrap.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000';
+  document.body.appendChild(wrap);
+
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible';
+  wrap.appendChild(svg);
+
+  var boxes=CALLOUTS.map(function(c){
+    var d=document.createElement('div');
+    d.className='cbox';
+    var h='<div class="cbox-city">◈ '+c.city+'</div>';
+    c.categories.forEach(function(cat){
+      h+='<div class="cbox-cat" style="color:'+(cat.color||'#3d6b9a')+'">'+cat.name+'</div>';
+      h+='<div class="cbox-co">'+cat.companies.join('<br>')+'</div>';
+    });
+    d.innerHTML=h; wrap.appendChild(d); return d;
+  });
+
+  function draw(){
+    // 强制浏览器计算布局，确保 offsetWidth/offsetHeight 有值
+    void wrap.offsetHeight;
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var W=window.innerWidth, H=window.innerHeight;
+    CALLOUTS.forEach(function(c,i){
+      var px=chart.convertToPixel({geoIndex:0},c.coords);
+      if(!px||isNaN(px[0])) return;
+      var box=boxes[i];
+      var bw=box.offsetWidth||160, bh=box.offsetHeight||80;
+      var bx,by,ex,ey;
+      var aH=H-120-20, aW=W-80-80;
+      if(c.side==='right'){
+        bx=W-bw-18;
+        by=c.pct!==undefined?(120+aH*c.pct):Math.max(120,Math.min(px[1]-bh/2,H-bh-20));
+        by=Math.max(120,Math.min(by,H-bh-20)); ex=bx; ey=by+bh/2;
+      } else if(c.side==='left'){
+        bx=18;
+        by=c.pct!==undefined?(120+aH*c.pct):Math.max(120,Math.min(px[1]-bh/2,H-bh-20));
+        by=Math.max(120,Math.min(by,H-bh-20)); ex=bx+bw; ey=by+bh/2;
+      } else if(c.side==='top'){
+        by=90;
+        bx=c.pct!==undefined?(80+aW*c.pct-bw/2):Math.max(20,Math.min(px[0]-bw/2,W-bw-20));
+        bx=Math.max(20,Math.min(bx,W-bw-20)); ex=bx+bw/2; ey=by+bh;
+      } else {
+        by=H-bh-18;
+        bx=c.pct!==undefined?(80+aW*c.pct-bw/2):Math.max(20,Math.min(px[0]-bw/2,W-bw-20));
+        bx=Math.max(20,Math.min(bx,W-bw-20)); ex=bx+bw/2; ey=by;
+      }
+      box.style.left=bx+'px'; box.style.top=by+'px';
+      var kx=(c.side==='right'||c.side==='left')?ex:px[0];
+      var ky=(c.side==='top'||c.side==='bottom')?ey:px[1];
+      var pl=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+      pl.setAttribute('points',px[0]+','+px[1]+' '+kx+','+ky+' '+ex+','+ey);
+      pl.setAttribute('stroke','rgba(77,200,255,.5)'); pl.setAttribute('stroke-width','1.2');
+      pl.setAttribute('fill','none'); pl.setAttribute('stroke-dasharray','5,3');
+      svg.appendChild(pl);
+      var ci=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      ci.setAttribute('cx',px[0]); ci.setAttribute('cy',px[1]); ci.setAttribute('r','5');
+      ci.setAttribute('fill','rgba(77,200,255,.15)'); ci.setAttribute('stroke','#4dc8ff');
+      ci.setAttribute('stroke-width','1.5'); svg.appendChild(ci);
+      var ci2=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      ci2.setAttribute('cx',px[0]); ci2.setAttribute('cy',px[1]); ci2.setAttribute('r','2.5');
+      ci2.setAttribute('fill','#4dc8ff'); svg.appendChild(ci2);
+    });
+  }
+  chart.on('georoam',draw); chart.on('finished',draw);
+  window.addEventListener('resize',function(){chart.resize();setTimeout(draw,80);});
+  setTimeout(draw,500);
+}
+fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json')
+  .then(function(r){return r.json();})
+  .then(function(geo){
+    echarts.registerMap('china',geo);
+    document.getElementById('loading').style.display='none';
+    var chart=echarts.init(document.getElementById('chart'));
+    chart.setOption({
+      backgroundColor:'#030d1e',
+      tooltip:{trigger:'item',backgroundColor:'rgba(3,20,50,.92)',borderColor:'rgba(0,150,255,.35)',
+        textStyle:{color:'#c8e0ff',fontSize:12},formatter:tip},
+      geo:{map:'china',roam:true,zoom:1.22,center:[106,37],label:{show:false},
+        itemStyle:{areaColor:'#071e3d',borderColor:'#1a4a7a',borderWidth:.8},
+        emphasis:{itemStyle:{areaColor:'#0d3060'},label:{show:false}}},
+      series:[
+        {name:'试点城市',type:'scatter',coordinateSystem:'geo',data:PILOTS,symbolSize:7,
+          itemStyle:{color:'rgba(77,200,255,.2)',borderColor:'rgba(77,200,255,.65)',borderWidth:1},
+          label:{show:true,formatter:'{b}',position:'right',color:'rgba(77,200,255,.6)',fontSize:10},
+          zlevel:1},
+        {name:'产业高地',type:'effectScatter',coordinateSystem:'geo',
+          data:HUBS.map(function(h){return{name:h.name,value:h.value,desc:h.desc};}),
+          symbolSize:18,rippleEffect:{brushType:'stroke',scale:4,period:3},
+          itemStyle:{color:'rgba(240,176,48,.85)',shadowColor:'#f0b030',shadowBlur:18},
+          label:{show:true,formatter:function(p){return p.name;},position:'top',
+            color:'#f0b030',fontSize:11,fontWeight:'bold'},zlevel:3},
+        {name:'硬件制造商',type:'scatter',coordinateSystem:'geo',data:HARDWARE,symbolSize:13,
+          itemStyle:{color:'#ff7043',shadowColor:'rgba(255,112,67,.7)',shadowBlur:8},
+          label:{show:false},zlevel:4},
+        {name:'数据服务商',type:'scatter',coordinateSystem:'geo',data:DATA_SVC,symbolSize:13,
+          itemStyle:{color:'#ab47bc',shadowColor:'rgba(171,71,188,.7)',shadowBlur:8},
+          label:{show:false},zlevel:4},
+        {name:'场景运营商',type:'scatter',coordinateSystem:'geo',data:SCENE,symbolSize:13,
+          itemStyle:{color:'#00e5a0',shadowColor:'rgba(0,229,160,.7)',shadowBlur:8},
+          label:{show:false},zlevel:4}
+      ]
+    });
+    initCallouts(chart);
+    window.addEventListener('resize',function(){chart.resize();});
+  })
+  .catch(function(){document.getElementById('loading').textContent='地图加载失败，请检查网络后刷新';});
+</script>
+</body>
+</html>
